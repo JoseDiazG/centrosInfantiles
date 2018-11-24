@@ -1,0 +1,26 @@
+{% extends 'proyecto/base.html' %}
+{% block content %}
+
+
+{% for curso in cursos%}
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Periodo</th>
+      <th scope="col">Centro</th>
+      <th scope="col">titulo</th>
+      <th scope="col">Num. Sala</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>{{curso.periodo}}</td>
+        <td>{{curso.centro.nombre}}</td>
+        <td>{{curso.docente.titulo}}</td>
+        <td>{{curso.sala.num_sala}}</td>
+    </tr>
+  </tbody>
+</table>
+{% endfor %}
+
+{% endblock %}
