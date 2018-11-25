@@ -1,0 +1,30 @@
+{% extends 'proyecto/base.html' %}
+{% block content %}
+
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">cedula</th>
+      <th scope="col">nombre</th>
+      <th scope="col">apellido</th>
+      <th scope="col">direccion</th>
+      <th scope="col">telefono</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for persona in personas%}
+    <tr>
+        <td>{{persona.cedula}}</td>
+        <td>{{persona.nombres}}</td>
+        <td>{{persona.apellidos}}</td>
+        <td>{{persona.direccion}}</td>
+        <td>{{persona.telefono}}</td>
+        <td>{{persona.email}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

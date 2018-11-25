@@ -1,0 +1,97 @@
+{% extends 'proyecto/base.html' %}
+{% block content %}
+
+<h1 class="text-center mb-3">{{centro.nombre}}</h1>
+
+<div class="card mb-3 " >
+  <img class="card-img-top" src="{{centro.imagen}}" alt="Card image cap" id="imagen">
+  <div class="card-body">
+    <h5 class="card-title text-center">Información</h5>
+
+    <ul class="list-group list-group-flush  ">
+        <li class="list-group-item"><strong>Dirección: </strong>{{centro.direccion}}</li>
+        <li class="list-group-item"><strong>Teléfono: </strong>{{centro.telefono}}</li>
+        <li class="list-group-item"><strong>Parroquia: </strong>{{centro.parroquia.nombre}}</li>
+        <li class="list-group-item"><strong>Cantón: </strong>{{centro.parroquia.canton.nombre}}</li>
+        <li class="list-group-item"><strong>Provincia: </strong>{{centro.parroquia.canton.provincia.nombre}}</li>
+    </ul>
+
+
+    <h5 class="card-title text-center mt-2">Servicios</h5>
+{% if servicios %}
+    {% for servicio in servicios%}
+    <ul >
+        <li >{{servicio.servicios.nombre}}</li>
+    </ul>
+    {% endfor %}
+    {% else %}
+        <h6>No hay datos disponibles.</h6>
+    {% endif %}
+
+
+    <h5 class="card-title text-center mt-2">Cursos</h5>
+{% if cursos %}
+
+    {% for curso in cursos%}
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Periodo</th>
+          <th scope="col">titulo</th>
+          <th scope="col">Docente</th>
+          <th scope="col">Num. Sala</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>{{curso.periodo}}</td>
+            <td>{{curso.docente.titulo}}</td>
+            <td>{{curso.docente.persona.nombres}} {{curso.docente.persona.apellidos}}</td>
+            <td><a href="{% url 'detalle-curso' curso.id %}" >{{curso.sala.num_sala}}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endfor %}
+    {% else %}
+        <h6>No hay datos disponibles.</h6>
+    {% endif %}
+
+  </div>
+</div>
+<div id="map" style="width:100%;height:800px;"></div>
+
+<script>
+     var map;
+     var input = document.getElementById("id_uri");
+     var lat="{{centro.latitud}}";
+     var lon="{{centro.longitud}}";
+     var nombre="{{centro.nombre}}";
+     function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+         // center: {lat: parseInt(this.lat), lng: parseInt(this.lon)},
+         center: new google.maps.LatLng(this.lat, this.lon),
+         zoom: 18
+       });
+       var marker = new google.maps.Marker({
+         position: new google.maps.LatLng(this.lat, this.lon),
+         map: map,
+         title: this.nombre
+       });
+     }
+     var tbl = document.getElementById("tblMain");
+             if (tbl != null) {
+                 for (var i = 0; i < tbl.rows.length; i++) {
+                     for (var j = 0; j < tbl.rows[i].cells.length; j++)
+                         tbl.rows[i].cells[j].onclick = function () { getval(this); };
+                 }
+             }
+             function getval(cel) {
+               var string =cel.innerHTML;
+               if (string.indexOf("http") == 0 ) {
+                 console.log(cel.innerHTML);
+                 input.setAttribute("value",cel.innerHTML);
+               }
+             }
+   </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4WBfTvYF5IxOzrd-sEtjmv73w7gfaoI0&callback=initMap" async defer></script>
+{% endblock %}

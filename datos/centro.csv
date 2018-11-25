@@ -1,0 +1,14 @@
+id_centro,nombre,imagen,telefono,longitud,latitud,parroquia_id
+1,Ciudad Alegria,,2548963,-79.2057,-4.0326,1
+2,Infancia Universitaria Manana,,2548964,-79.203,-4.028,1
+3,Yahuarcuna,,2548965,-79.1975,-4.0171,1
+4,Daniel Alvarez,,2548966,-79.2089,-4.0178,1
+5,Zamora Huayco,,2548967,-79.1865,-4.0074,1
+6,Nino Jesus,https://firebasestorage.googleapis.com/v0/b/centros-infantiles.appspot.com/o/centros%2FninoJesus.jpeg?alt=media&token=e2ab46a6-cb8e-4be5-ae01-b92ec12c2ea2,2548968,-79.2063,-4.0053,1
+7,El Pedestal,,2548969,-79.2067,-4.0054,1
+8,Las Penas,https://firebasestorage.googleapis.com/v0/b/centros-infantiles.appspot.com/o/centros%2FlasPenas.jpeg?alt=media&token=a47b8efc-c57b-4588-84cf-f2a1308ac8be,2548970,-79.2101,-4.0022,1
+9,Ciudad Victoria,https://firebasestorage.googleapis.com/v0/b/centros-infantiles.appspot.com/o/centros%2FciudadVictoria.jpeg?alt=media&token=f5a024df-048c-4797-bbec-b0ed712fd1a6,2548971,-79.2319,-4.0005,1
+10,8 De diciembre,https://firebasestorage.googleapis.com/v0/b/centros-infantiles.appspot.com/o/centros%2F8deDiciembre.jpeg?alt=media&token=aafba218-918c-4bcb-95e0-f090b0d87b80,2548972,-79.2106,-3.9912,1
+11,Caritas Felices,,2548973,-79.196,-3.9807,1
+12,Clodoveo Jaramillo,,2548974,-79.2115,-3.9806,1
+13,Blanca Ruiz de Godoy,,2548975,-79.2159,-3.9736,1

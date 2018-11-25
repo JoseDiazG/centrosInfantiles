@@ -1,0 +1,37 @@
+{% extends 'proyecto/base.html' %}
+{% block content %}
+<h1 class="text-center mb-3">{{curso.centro.nombre}}</h1>
+
+<div class="card">
+  <h5 class="card-header">Información del Curso</h5>
+  <div class="card-body">
+    <p class="card-text"><strong>Número sala: </strong>{{curso.sala.num_sala}}</p>
+    <p class="card-text"><strong>Periodo: </strong>{{curso.periodo}}</p>
+    <p class="card-text"><strong>Docente: </strong>{{curso.docente.persona.nombres}} {{curso.docente.persona.apellidos}}</p>
+  </div>
+</div>
+
+<h3 class="text-center mt-2">Alumnos</h3>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">cedula</th>
+      <th scope="col">nombre</th>
+      <th scope="col">apellido</th>
+      <th scope="col">edad</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for alumno in alumnos%}
+    <tr>
+        <td>{{alumno.nino.cedula}}</td>
+        <td>{{alumno.nino.nombres}}</td>
+        <td>{{alumno.nino.apellidos}}</td>
+        <td>{{alumno.nino.edad}}</td>
+
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

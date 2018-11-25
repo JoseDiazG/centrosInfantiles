@@ -1,0 +1,32 @@
+{% extends 'proyecto/base.html' %}
+{% block content %}
+
+
+<div class="site-content">
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column ">
+            <h1 class="site-title text-center " id="texto">CENTRO DE DESARROLLO INFANTIL</h1>
+        </div>
+    </div>
+    <div class="d-flex flex-row m-auto">
+        <p class="mb-5"></p>
+    </div>
+</div>
+
+<div class="row mt-3 mx-auto">
+
+    {% for centro in centros%}
+    <div class="col-sm-4 mt-1 ">
+      <div class="card" >
+        <img class="card-img-top" src="{{centro.imagen}}" alt="Card image cap" id="imagen-card">
+        <div class="card-body">
+          <h5 class="card-title "> <a href="{% url 'detalle-centro' centro.id %}"  class="text-success">{{centro.nombre}}</a></h5>
+          <p><strong>Direccion: </strong>{{centro.direccion}}</p>
+          <p><strong>Telefono: </strong>{{centro.telefono}}</p>
+        </div>
+      </div>
+  </div>
+  {% endfor %}
+
+
+{% endblock %}

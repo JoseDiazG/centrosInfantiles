@@ -34,8 +34,26 @@ class Sala(models.Model):
     capacidad = models.IntegerField()
     descripcion = models.CharField(max_length=40)
 
+class Provincia(models.Model):
+    nombre = models.CharField(max_length=45)
+
+class Canton(models.Model):
+    nombre = models.CharField(max_length=45)
+    provincia = models.ForeignKey(Provincia, on_delete=models.CASCADE)
+
+class Parroquia(models.Model):
+    nombre = models.CharField(max_length=45)
+    canton = models.ForeignKey(Canton, on_delete=models.CASCADE)
+
+
 class Centro(models.Model):
     nombre = models.CharField(max_length=45)
+    imagen = models.CharField(max_length=150)
+    telefono = models.IntegerField()
+    latitud = models.DecimalField(max_digits=9, decimal_places=6)
+    longitud = models.DecimalField(max_digits=9, decimal_places=6)
+    direccion = models.CharField(max_length=100)
+    parroquia = models.ForeignKey(Parroquia, on_delete=models.CASCADE)
 
 class Curso(models.Model):
     periodo = models.DateField(auto_now=False)
@@ -51,15 +69,6 @@ class Alumno(models.Model):
 class Servicios(models.Model):
     nombre = models.CharField(max_length=45)
     detalle = models.CharField(max_length=45)
-
-class Localidad(models.Model):
-    provincia = models.CharField(max_length=45)
-    canton = models.CharField(max_length=45)
-    parroquia = models.CharField(max_length=45)
-    latitud = models.CharField(max_length=45)
-    longitud = models.CharField(max_length=45)
-    direccion = models.CharField(max_length=100)
-    servicios = models.ForeignKey(Servicios, on_delete=models.CASCADE)
 
 class Centro_Servicios(models.Model):
     centro = models.ForeignKey(Centro, on_delete=models.CASCADE)
